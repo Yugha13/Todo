@@ -27,3 +27,5 @@ const middleware = async ( req, res ) => {
         return res.json({ msg: "something went wrong", e });
     }
 }
+
+module.exports = middleware
