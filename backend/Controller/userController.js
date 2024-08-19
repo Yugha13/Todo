@@ -53,8 +53,9 @@ const login = async ( req, res ) => {
 }
 
 const viewuser = async ( req, res ) => {
+    const { gmail } = req.body;
     return res.json({ msg : gmail }) 
-}
+} 
 
 
 

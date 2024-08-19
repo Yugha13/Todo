@@ -9,15 +9,18 @@ const userRouter = require("./Router/userRouter");
 const cookieParser = require("cookie-parser");
 
 
-app.use(cors({
-    credential: true
-}));
+app.use(
+  cors({
+    credential: true,
+    origin: "https://web.postman.co/",
+  })
+);
 
 app.use(express.json());
 app.use(
   cookieParser({
     credential: true,
-    origin: "https://web.postman.co",
+    origin: "https://web.postman.co/",
   })
 );
 

@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const prisma = new PrismaClient();
 
 
-const middleware = async ( req, res ) => {
+const middleware = async ( req, res, next ) => {
     const { token } = req.cookies;
     if(!token) return res.json({ msg : "try to login" });
     
@@ -16,6 +16,8 @@ const middleware = async ( req, res ) => {
                 gmail
             }
         });
+        //console.log(oldUser);
+        
         if(Object.keys(oldUser).length != 0) {
             req.body.gmail = oldUser.gmail;
             return next();
@@ -28,4 +30,4 @@ const middleware = async ( req, res ) => {
     }
 }
 
-module.exports = middleware
+module.exports = middleware;
