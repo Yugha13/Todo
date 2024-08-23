@@ -26,7 +26,7 @@ const signup = async ( req, res ) => {
         })
         return res.json({ msg : "user created" });
     } catch (e) {
-        return res.json({ msg : "user already created" });
+        return res.status(403).json({ msg : "user already created" });
     }
 }
 
@@ -43,12 +43,12 @@ const login = async ( req, res ) => {
                 password
             }
         });
-        if(!olduser) return res.json({ msg: "user not found" });
+        if(!olduser) return res.status(403).json({ msg: "user not found" });
         const token  = await jwt.sign(gmail, process.env.KEY);
         res.cookie("token", token);
-        return res.json({ msg : "user logedin" });
+        return res.json({ msg : "user logedin", token });
     } catch (e) {
-        res.json({ err : e });
+        res.status(405).json({ err : e });
     }
 }
 

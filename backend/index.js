@@ -11,18 +11,18 @@ const cookieParser = require("cookie-parser");
 
 app.use(
   cors({
-    credential: true,
-    origin: "https://web.postman.co/",
+    credentials: true,
+    origin: ["https://web.postman.co/", "http://localhost:5173"],
+  })
+);
+app.use(
+  cookieParser({
+    credentials: true,
+    origin: ["http://localhost:5173"],
   })
 );
 
 app.use(express.json());
-app.use(
-  cookieParser({
-    credential: true,
-    origin: "https://web.postman.co/",
-  })
-);
 
 
 app.use("/api/v1/user", userRouter );
