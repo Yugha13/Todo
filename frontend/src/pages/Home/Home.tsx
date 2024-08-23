@@ -24,7 +24,7 @@ export function Home() {
       <PlaceholdersAndVanishInput
         placeholders={placeholders}
         onChange={handleChange}
-        onSubmit={onSubmit}
+        onSubmit={ onSubmit}
       />
     </div>
   );
